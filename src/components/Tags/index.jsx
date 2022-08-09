@@ -1,21 +1,18 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Tags = () => {
 
     const [tag, setTag] = useState([]);
+    const data = useSelector((state) =>  state.products);
+    const dispatch = useDispatch();
 
     useEffect(()=>{
-        axios
-            .get('http://localhost:3000/api/tags')
-            .then((data) => {
-                setTag(data.data);
-            })
-            .catch(error => console.log(error))
+        //dispatch(getTags)
     },[]);
 
-    console.log(tag)
+//    console.log(data)
 
     return(
         <div>
@@ -27,3 +24,12 @@ const Tags = () => {
 }
 
 export default Tags;
+
+/*
+axios
+            .get('http://localhost:3000/api/tags')
+            .then((data) => {
+                setTag(data.data);
+            })
+            .catch(error => console.log(error))
+*/

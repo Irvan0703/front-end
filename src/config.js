@@ -1,8 +1,15 @@
-import axios from "axios";
+const api_host =  "http://localhost:3000"
 
-export default axios.create({
-  baseURL: "http://localhost:3000/api/v1",
-  headers: {
-    "Content-type": "application/json"
+const authHeader = () => {
+  const user = localStorage.getItem('user');
+  if (user) {
+    return { Authorization: 'Bearer ' + user};
+  } else {
+    return {};
   }
-});
+}
+
+export default {
+  api_host,
+  authHeader
+}
